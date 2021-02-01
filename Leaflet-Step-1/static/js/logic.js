@@ -82,7 +82,7 @@ d3.json( "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geo
 var legend = L.control({ position: "bottomright" });
 legend.onAdd = function() {
   var div = L.DomUtil.create("div", "info legend");
-  // var grades = [-10, 4, 8, 12, 16, 20];
+  // var grades = [-10, 4, 8, 12, 16, 20, 24];
   // var colors = [
   //   "#98ee00",
   //   "#d4ee00",
@@ -99,6 +99,7 @@ legend.onAdd = function() {
   "<br> >20 = dark blue</br>",
   "<br> >24 = black</br>"]
   //  "<i style= 'background:" + colors[i] +"'></i> " + grades[i] + (grades[i+1] ? "&ndash;" + grades[i+1] + "<br>": "+");}
+  // the given code for the legend does not work
   return div;
 };
 legend.addTo(myMap);
