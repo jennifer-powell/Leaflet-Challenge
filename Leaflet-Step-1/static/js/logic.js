@@ -39,18 +39,21 @@ d3.json( "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geo
   }
   
   function getColor(depth) {
-    if (depth > 20) {
-      return "#ea2c2c"
+    if (depth > 24) {
+      return "#1f011b"
+      
+    } else if (depth > 20) {
+      return "#060399"
     } else if (depth > 16) {
-      return "#ea822c"
+      return "#1803ff"
     } else if (depth > 12) {
-      return "#ee9c00"
+      return "#5703ff"
     } else if (depth > 8) {
-      return "#eecc00"
+      return "#9603ff"
     } else if (depth > 4) {
-      return "#d4ee00"
+      return "#d503ff"
     } else {
-      return "#98ee00"
+      return "#ff03dd"
       }
     }
   
@@ -79,21 +82,23 @@ d3.json( "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geo
 var legend = L.control({ position: "bottomright" });
 legend.onAdd = function() {
   var div = L.DomUtil.create("div", "info legend");
-  var grades = [-10, 4, 8, 12, 16, 20];
-  var colors = [
-    "#98ee00",
-    "#d4ee00",
-    "#eecc00",
-    "#ee9c00",
-    "#ea2c2c"];
+  // var grades = [-10, 4, 8, 12, 16, 20];
+  // var colors = [
+  //   "#98ee00",
+  //   "#d4ee00",
+  //   "#eecc00",
+  //   "#ee9c00",
+  //   "#ea2c2c"];
 
-  for (var i = 0; i < grades.length; i++) {
-  div.innerHTML += "<i style= 'background:"
-  + colors[i]
-  +"'></i> "
-  + grades[i]
-  + (grades[i+1] ? "&ndash;" + grades[i+1] + "<br>": "+");
-  }
+  // for (var i = 0; i < grades.length; i++) {
+  div.innerHTML= ["<br> Depth in km</br>","<br> >-10 = pink</br>",
+  "<br> >4 = magenta</br>",
+  "<br> >8 = purple</br>",
+  "<br> >12 = indigo</br>",
+  "<br> >16 = blue</br>",
+  "<br> >20 = dark blue</br>",
+  "<br> >24 = black</br>"]
+  //  "<i style= 'background:" + colors[i] +"'></i> " + grades[i] + (grades[i+1] ? "&ndash;" + grades[i+1] + "<br>": "+");}
   return div;
 };
 legend.addTo(myMap);
